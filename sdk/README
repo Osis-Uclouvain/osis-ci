@@ -1,5 +1,5 @@
 # SDK Generator
-Version 5.2.1 du generator
+Version 7.19.0 du generator
 
 Le script generate.sh permet de générer un SDK Python grace à un fichier .yml OpenAPI et de pousser les modifications sur le répertoire GIT
 
