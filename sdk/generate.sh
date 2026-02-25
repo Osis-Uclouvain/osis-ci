@@ -1,14 +1,15 @@
 #!/bin/bash
-OPENAPI_GENERATOR_PATH=$(pwd)'/openapi-generator-cli.jar'
+OPENAPI_GENERATOR_PATH=$(pwd)'/openapi-generator-cli_v5.4.0.jar'
 YQ_PATH=$(pwd)'/yq_linux_amd64'
 GIT_PUSH_PATH=$(pwd)'/git_push.sh'
 TMP_FOLDER=$(pwd)'/tmp'
 
-while getopts i:p: flag
+while getopts i:p:g: flag
 do
     case "${flag}" in
         i) INPUT_YML=${OPTARG};;
         p) PROJECT_NAME=${OPTARG};;
+        g) OPENAPI_GENERATOR_PATH="$(pwd)/${OPTARG}";;
     esac
 done
 PACKAGE_NAME=$(echo $PROJECT_NAME | tr '-' '_')  # Replace dash from project to build package name
@@ -29,7 +30,7 @@ curl $INPUT_YML --output $TMP_FOLDER/schema.yml
 SCHEMA_VERSION=$($YQ_PATH e '.info.version' $TMP_FOLDER/schema.yml)
 echo "Schema version: $SCHEMA_VERSION";
 
-# Check if project folder exist - remove if exist
+## Check if project folder exist - remove if exist
 if [ -d "$TMP_FOLDER/$PROJECT_NAME" ]; then
     rm -rf $TMP_FOLDER/$PROJECT_NAME
 fi
