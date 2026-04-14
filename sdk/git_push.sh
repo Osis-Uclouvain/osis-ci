@@ -10,7 +10,7 @@ do
 done
 
 BRANCH_NAME="wip-build-$SDK_VERSION"
-GIT_PATH="git@github.com:uclouvain/${GIT_REPOSITORY}.git"
+GIT_PATH="git@github.com:Osis-Uclouvain/${GIT_REPOSITORY}.git"
 
 echo "######## Push SDK ########";
 echo "Folder path: $FOLDER_PATH";
